@@ -1,0 +1,59 @@
+body {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}
+img {
+  max-width: 60%;
+  padding-left: 20px;
+}
+form {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.item-2 {
+  background-color: #ef7a49;
+  border-radius: 10px;
+  width: 70%;
+  max-width: 700px;
+}
+.item-1 {
+  text-align: center;
+}
+input {
+  height: 30px;
+  border-color: #1d1d1b;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 400px;
+}
+button {
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+  color: #1d1d1b;
+  height: 25px;
+  width: 80%;
+
+  max-width: 200px;
+}
+button:hover {
+  color: white;
+  background-color: #1d1d1b;
+}
+a {
+  text-decoration: none;
+  color: #1d1d1b;
+}
+::placeholder {
+  color: #1d1d1b;
+}
