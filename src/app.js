@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 require("./db/mongoose");
 const cookieParser = require("cookie-parser");
+const ejs = require("ejs");
 
 const userRouter = require("./routers/user");
 const taskRouter = require("./routers/task");
@@ -10,6 +11,7 @@ const taskRouter = require("./routers/task");
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
 app.use(cookieParser());
 app.use(userRouter);
 app.use(taskRouter);

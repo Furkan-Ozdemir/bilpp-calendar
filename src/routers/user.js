@@ -5,13 +5,24 @@ const jwt = require("jsonwebtoken");
 const auth = require("../middleware/auth");
 const path = require("path");
 
+router.get("/", (req, res) => {
+  res.render("index");
+});
+router.get("/register", (req, res) => {
+  res.render("register");
+});
+router.get("/private", auth, (req, res) => {
+  res.render("private");
+});
+
 router.post("/users", async (req, res) => {
   const user = new User(req.body);
   try {
     await user.save();
     const token = await user.generateAuthToken();
+
     res.cookie("auth_token", token);
-    res.sendFile(path.resolve(__dirname, "..", "views", "private.html"));
+    res.render("private");
   } catch (error) {
     res.status(400).send(error);
   }
@@ -26,7 +37,7 @@ router.post("/users/login", async (req, res) => {
     const token = await user.generateAuthToken();
 
     res.cookie("auth_token", token);
-    res.sendFile(path.resolve(__dirname, "..", "views", "private.html"));
+    res.redirect("/private");
   } catch (error) {
     res.status(400).send();
   }

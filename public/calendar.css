@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  box-sizing: border-box;
+}
+:root {
+  --background-color: #ef7a49;
+  --background-overlay-color: #fff;
+  --text-color: #000;
+}
+body {
+  background: var(--background-color);
+}
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: auto;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+.calendar {
+  padding: 50px;
+  width: 850px;
+}
+
+.calendar-layout {
+  padding: 50px;
+  background: white;
+  border-radius: 24px;
+  display: flex;
+  width: 750px;
+  flex-wrap: wrap; /*dışarı taşmaması için */
+}
+.calendar-layout h2 {
+  flex: 1 100%;
+}
+.calendar-layout span {
+  width: calc(100% / 14);
+  margin: calc(100% / 28);
+  padding: calc(100% / 56) calc(100% / 28);
+  border-radius: 50%;
+  text-indent: -7.5px;
+  text-align: center;
+  /* transition: background 0.2s, color 0.2s; */
+  cursor: pointer;
+}
+.calendar-layout span:not(.null):hover,
+.calendar-layout span:not(.null)[data-selected] {
+  background: #1d1d1b;
+  color: white;
+}
