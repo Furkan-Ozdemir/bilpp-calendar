@@ -3,6 +3,9 @@ const router = new express.Router();
 const Task = require("../models/task");
 const auth = require("../middleware/auth");
 
+router.get("/a", (req, res) => {
+  res.render("taskToday");
+});
 router.post("/tasks", auth, async (req, res) => {
   const task = new Task(req.body);
   try {
@@ -20,6 +23,22 @@ router.get("/tasks", auth, async (req, res) => {
     res.send(tasks);
   } catch (error) {
     res.status(500).send();
+  }
+});
+router.get("/task/today", auth, async (req, res) => {
+  let year = new Date().getFullYear();
+  let day = (new Date().getDate() < 10 ? "0" : "") + new Date().getDate();
+  let month =
+    (new Date().getMonth() < 10 ? "0" : "1") + (new Date().getMonth() + 1);
+  let dateValue = year + "-" + month + "-" + day;
+  try {
+    const tasks = await Task.find({ taskDate: dateValue });
+    if (!tasks) {
+      return res.send("no task found");
+    }
+    res.send(tasks); // başka bi sayfa oluştur sırf taskler için
+  } catch (error) {
+    res.send(error);
   }
 });
 router.get("/tasks/:id", auth, async (req, res) => {

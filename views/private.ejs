@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="calendar.css">
+    <link rel="stylesheet" href="aside.css">
 
     <title>bilpp-calendar</title>
 </head>
@@ -35,7 +36,7 @@
                 <span>11</span>
                 <span>12</span>
                 <span>13</span>
-                <span data-selected>14</span>
+                <span>14</span>
                 <span>15</span>
                 <span>16</span>
                 <span>17</span>
@@ -55,10 +56,33 @@
             </div>
         </div>
 
+        <div class="aside">
+            <div class="container">
+                <h2>
+                    Today's Date: <%= selectedDate %>
+                </h2>
+                <form action="/tasks" method="POST">
+                    <input type="text" name="taskName" placeholder=" task name" required>
+                    <input type="text" name="description" placeholder=" task description" required>
+                    <input type="date" id="dateInput" name="taskDate" value="" required>
+                    <input type="time" id="taskTime" name="taskTime">
+
+                    <button>add task</button>
+                </form>
+                <form action="/task/today" method="get">
+                    <button>Show Today's tasks</button>
+                </form>
+
+            </div>
+
+            <!-- buraya o günkü taskler gelsin her span'e tıkladığında db requesti yapsın -->
+            <!-- eklenen taskler güncellenebilmeli ama o kolay zaten backendi hazır -->
+        </div>
     </div>
 
 
-
+    <script src="http://localhost:3000/form.js"></script>
+    <script src="http://localhost:3000/dateSelection.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-family: "Roboto", sans-serif;
   box-sizing: border-box;
 }
 :root {
@@ -35,6 +35,7 @@ h1 {
   width: 750px;
   flex-wrap: wrap; /*dışarı taşmaması için */
 }
+
 .calendar-layout h2 {
   flex: 1 100%;
 }
@@ -48,8 +49,13 @@ h1 {
   /* transition: background 0.2s, color 0.2s; */
   cursor: pointer;
 }
-.calendar-layout span:not(.null):hover,
-.calendar-layout span:not(.null)[data-selected] {
+.today {
+  font-weight: 700;
+  background-color: #ef7a49;
+  color: white;
+}
+.calendar-layout span:hover,
+.calendar-layout span[data-selected] {
   background: #1d1d1b;
   color: white;
 }

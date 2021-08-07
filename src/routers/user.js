@@ -12,7 +12,15 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 router.get("/private", auth, (req, res) => {
-  res.render("private");
+  const today = new Date();
+  res.render("private", {
+    selectedDate:
+      today.getDate() +
+      "/" +
+      (today.getMonth() + 1) +
+      "/" +
+      today.getFullYear(),
+  });
 });
 
 router.post("/users", async (req, res) => {
@@ -22,7 +30,10 @@ router.post("/users", async (req, res) => {
     const token = await user.generateAuthToken();
 
     res.cookie("auth_token", token);
-    res.render("private");
+
+    res.render("private", {
+      selectedDate: "august",
+    });
   } catch (error) {
     res.status(400).send(error);
   }
@@ -39,7 +50,7 @@ router.post("/users/login", async (req, res) => {
     res.cookie("auth_token", token);
     res.redirect("/private");
   } catch (error) {
-    res.status(400).send();
+    res.redirect("/");
   }
 });
 router.post("/users/logout", auth, async (req, res) => {

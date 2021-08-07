@@ -3,11 +3,21 @@ const Task = mongoose.model("Task", {
   description: {
     type: String,
     trim: true,
-    required: true,
   },
   completed: {
     type: Boolean,
     default: false,
+  },
+  taskName: {
+    type: String,
+    trim: true,
+  },
+  taskDate: {
+    type: String,
+    trim: true,
+  },
+  taskTime: {
+    type: String,
   },
 });
 

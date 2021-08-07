@@ -1,5 +1,5 @@
 body {
-  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 .main {
   display: flex;
@@ -34,6 +34,7 @@ input {
   border-color: #1d1d1b;
   border-radius: 10px;
   width: 80%;
+  outline: none;
   max-width: 400px;
 }
 button {
