@@ -2,10 +2,11 @@ const express = require("express");
 const router = new express.Router();
 const Task = require("../models/task");
 const auth = require("../middleware/auth");
+const bodyParser = require("body-parser");
 
-router.get("/a", (req, res) => {
-  res.render("taskToday");
-});
+// router.get("/a", auth, (req, res) => {
+//   res.render("taskToday");
+// });
 router.post("/tasks", auth, async (req, res) => {
   const task = new Task(req.body);
   try {
@@ -41,6 +42,28 @@ router.get("/task/today", auth, async (req, res) => {
     res.send(error);
   }
 });
+router.get("/today", auth, (req, res) => {
+  res.render("taskToday");
+});
+router.get("/tasks/selectedDate", auth, async (req, res) => {
+  // belki header olarak gönderilebilir. date
+  const date = req.query.date;
+
+  try {
+    const tasks = await Task.find({ taskDate: date });
+    // console.log(req.body);
+    if (!tasks || tasks.length == 0) {
+      res.send("no task found at " + date);
+    }
+    res.send(tasks);
+  } catch (error) {
+    res.send(error);
+  }
+});
+router.get("/tasks/date", auth, (req, res) => {
+  res.render("taskDate");
+});
+
 router.get("/tasks/:id", auth, async (req, res) => {
   const _id = req.params.id;
   try {
@@ -52,9 +75,35 @@ router.get("/tasks/:id", auth, async (req, res) => {
   }
 });
 
-router.patch("/tasks/:id", auth, async (req, res) => {
+// router.patch("/tasks/:id", auth, async (req, res) => {
+//   const updates = Object.keys(req.body);
+//   const allowedUpdates = ["taskName", "taskDate", "taskTime", "description"];
+//   const isValid = updates.every((update) => {
+//     return allowedUpdates.includes(update);
+//   });
+//   const id = req.params.id;
+//   if (!isValid) {
+//     return res.status(400).send("not valid update parameters");
+//   }
+
+//   try {
+//     // const task = await Task.findOneAndUpdate({ _id: id }, req.body, {
+//     //   new: true,
+//     //   runValidators: true,
+//     //   useFindAndModify: false,
+//     // });
+//     const task = await Task.findById(id);
+//     updates.forEach((update) => (task[update] = req.body[update]));
+//     await task.save();
+//     res.send(task);
+//   } catch (error) {
+//     res.status(400).send();
+//   }
+// });
+router.post("/tasks/:id", auth, async (req, res) => {
+  delete req.body.taskId;
   const updates = Object.keys(req.body);
-  const allowedUpdates = ["completed", "description"];
+  const allowedUpdates = ["taskName", "taskDate", "taskTime", "description"];
   const isValid = updates.every((update) => {
     return allowedUpdates.includes(update);
   });
@@ -64,29 +113,34 @@ router.patch("/tasks/:id", auth, async (req, res) => {
   }
 
   try {
-    // const task = await Task.findOneAndUpdate({ _id: id }, req.body, {
-    //   new: true,
-    //   runValidators: true,
-    //   useFindAndModify: false,
-    // });
     const task = await Task.findById(id);
     updates.forEach((update) => (task[update] = req.body[update]));
     await task.save();
-    res.send(task);
+    res.redirect("/private");
   } catch (error) {
     res.status(400).send();
   }
 });
-
-router.delete("/tasks/:id", auth, async (req, res) => {
+router.post("/tasksDelete/:id", auth, async (req, res) => {
   const id = req.params.id;
   try {
     const task = await Task.findByIdAndDelete(id);
     if (!task) return res.status(404).send("no task found");
-    res.send(task);
+    res.redirect("/private");
   } catch (error) {
     res.status(500).send(error);
   }
 });
+
+// router.delete("/tasks/:id", auth, async (req, res) => {
+//   const id = req.params.id;
+//   try {
+//     const task = await Task.findByIdAndDelete(id);
+//     if (!task) return res.status(404).send("no task found");
+//     res.send(task);
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
+// });
 
 module.exports = router;

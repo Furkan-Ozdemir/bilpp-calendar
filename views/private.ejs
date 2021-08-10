@@ -58,25 +58,33 @@
 
         <div class="aside">
             <div class="container">
-                <h2>
-                    Today's Date: <%= selectedDate %>
-                </h2>
+                <h2>Add a new Task</h2>
                 <form action="/tasks" method="POST">
                     <input type="text" name="taskName" placeholder=" task name" required>
                     <input type="text" name="description" placeholder=" task description" required>
                     <input type="date" id="dateInput" name="taskDate" value="" required>
                     <input type="time" id="taskTime" name="taskTime">
 
-                    <button>add task</button>
+                    <button>Add task</button>
                 </form>
-                <form action="/task/today" method="get">
-                    <button>Show Today's tasks</button>
-                </form>
+
+                <div class="dateTasks">
+
+                    <h2>
+                        Today's Date: <%= selectedDate %>
+                    </h2>
+
+                    <a href="/today">Show Today's tasks</a>
+
+
+                    <h2>Show <p id="selectedDate" style="display: inline;"></p>'s tasks</h2>
+                    <input type="hidden" name="selectedDate" id="inputHidden">
+                    <a href="/tasks/date" id="showTaskUrl">Show tasks </a>
+                </div>
+
 
             </div>
 
-            <!-- buraya o günkü taskler gelsin her span'e tıkladığında db requesti yapsın -->
-            <!-- eklenen taskler güncellenebilmeli ama o kolay zaten backendi hazır -->
         </div>
     </div>
 

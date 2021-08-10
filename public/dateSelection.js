@@ -11,6 +11,9 @@ dateInput.setAttribute("value", `${dateValue}`);
 /*----------------------------------------- */
 
 let spans = document.getElementsByTagName("span");
+let selectedDateP = document.getElementById("selectedDate");
+let inputHidden = document.getElementById("inputHidden");
+let showTaskUrl = document.getElementById("showTaskUrl");
 
 for (let i = 0; i < spans.length; i++) {
   if (spans[i].innerHTML == today) {
@@ -30,6 +33,23 @@ for (let i = 0; i < spans.length; i++) {
       "value",
       `2021-08-${spanValue < 10 ? "0" : ""}${spanValue}`
     );
+  });
+  spans[i].addEventListener("click", () => {
+    selectedDateP.innerHTML = year + "/" + month + "/" + spans[i].innerHTML;
+    inputHidden.setAttribute(
+      "value",
+      `${
+        year +
+        "-" +
+        month +
+        "-" +
+        (spans[i].innerHTML < 10 ? "0" : "") +
+        spans[i].innerHTML
+      }`
+    );
+  });
+  spans[i].addEventListener("click", () => {
+    showTaskUrl.setAttribute("href", `/tasks/date?date=${inputHidden.value}`);
   });
 }
 /* ----------------------------------------- */
