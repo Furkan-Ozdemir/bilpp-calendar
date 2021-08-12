@@ -1,18 +1,18 @@
-createH2 = () => {
+createP = () => {
   const params = new URLSearchParams(window.location.search);
-  const date = params.get("date");
-  const h2 = document.getElementById("dateSelected");
-  h2.innerHTML = date;
+  const searchPhrase = params.get("searchPhrase");
+  const p = document.getElementById("phrase");
+  p.innerHTML = searchPhrase;
 };
-createH2();
+createP();
 
-getDateTasks = async () => {
+getPhraseTasks = async () => {
   // query parametresi kullanılabilir
   const params = new URLSearchParams(window.location.search);
-  const date = params.get("date");
+  const searchPhrase = params.get("searchPhrase");
   try {
     let data = await fetch(
-      "http://localhost:3000/tasks/selectedDate?date=" + date
+      "http://localhost:3000/tasks/phrase?searchPhrase=" + searchPhrase
     );
     let dataJson = await data.json();
     console.log(dataJson);
@@ -36,4 +36,4 @@ getDateTasks = async () => {
   }
 };
 
-getDateTasks();
+getPhraseTasks();

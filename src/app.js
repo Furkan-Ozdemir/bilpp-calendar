@@ -15,6 +15,9 @@ app.set("view engine", "ejs");
 app.use(cookieParser());
 app.use(userRouter);
 app.use(taskRouter);
+app.get("*", (req, res) => {
+  res.status(404).send("no such page");
+});
 
 app.listen(port, () => {
   console.log("server is running on port ", port);

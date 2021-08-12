@@ -14,6 +14,8 @@ let spans = document.getElementsByTagName("span");
 let selectedDateP = document.getElementById("selectedDate");
 let inputHidden = document.getElementById("inputHidden");
 let showTaskUrl = document.getElementById("showTaskUrl");
+let searchByPhraseUrl = document.getElementById("searchByPhraseUrl");
+let searchByPhraseInput = document.getElementById("searchByPhraseInput");
 
 for (let i = 0; i < spans.length; i++) {
   if (spans[i].innerHTML == today) {
@@ -52,4 +54,10 @@ for (let i = 0; i < spans.length; i++) {
     showTaskUrl.setAttribute("href", `/tasks/date?date=${inputHidden.value}`);
   });
 }
+searchByPhraseUrl.addEventListener("click", () => {
+  searchByPhraseUrl.setAttribute(
+    "href",
+    `/tasks/phraseFound?searchPhrase=${searchByPhraseInput.value}`
+  );
+});
 /* ----------------------------------------- */

@@ -59,7 +59,7 @@ router.post("/users/logout", auth, async (req, res) => {
       return token.token !== req.token;
     });
     await req.user.save();
-    res.send();
+    res.redirect("/");
   } catch (error) {
     res.status(500).send();
   }
@@ -101,11 +101,6 @@ router.patch("/users/:name", auth, async (req, res) => {
   }
 
   try {
-    // const user = await User.findOneAndUpdate({ name }, req.body, {
-    //   new: true,
-    //   runValidators: true,
-    //   useFindAndModify: false,
-    // }); // yeni kullanıcıyı return ediyor.
     const user = await User.findOne({ name });
     updates.forEach((update) => (user[update] = req.body[update]));
     await user.save();

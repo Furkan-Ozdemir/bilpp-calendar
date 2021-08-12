@@ -19,7 +19,10 @@
     <div class="app">
 
         <div class="calendar">
-            <h1>bilpp calendar</h1>
+            <h1>bilpp calendar <form action="/users/logout" method="POST" style="display: inline;">
+                    <button type="submit">logout</button>
+                </form>
+            </h1>
             <div class="calendar-layout">
                 <h2>August</h2>
 
@@ -64,6 +67,8 @@
                     <input type="text" name="description" placeholder=" task description" required>
                     <input type="date" id="dateInput" name="taskDate" value="" required>
                     <input type="time" id="taskTime" name="taskTime">
+                    <label for="taskColor">Pick a color</label>
+                    <input type="color" id="taskColor" name="taskColor" value="#ef7a49" style="border-radius: 0px;">
 
                     <button>Add task</button>
                 </form>
@@ -80,6 +85,11 @@
                     <h2>Show <p id="selectedDate" style="display: inline;"></p>'s tasks</h2>
                     <input type="hidden" name="selectedDate" id="inputHidden">
                     <a href="/tasks/date" id="showTaskUrl">Show tasks </a>
+
+                    <h2>Search by phrase</h2>
+                    <input type="text" id="searchByPhraseInput" name="taskPhrase">
+                    <a href="/tasks/phraseFound" id="searchByPhraseUrl">Search</a>
+
                 </div>
 
 
@@ -89,7 +99,6 @@
     </div>
 
 
-    <script src="http://localhost:3000/form.js"></script>
     <script src="http://localhost:3000/dateSelection.js"></script>
 </body>
 

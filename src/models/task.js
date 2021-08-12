@@ -19,6 +19,9 @@ const Task = mongoose.model("Task", {
   taskTime: {
     type: String,
   },
+  taskColor: {
+    type: String,
+  },
 });
 
 module.exports = Task;

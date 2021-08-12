@@ -10,10 +10,11 @@ getTodayTasks = async () => {
     for (let i = 0; i < dataJson.length; i++) {
       let newRow = table.insertRow(i + 1);
       let keys = Object.values(dataJson[i]);
-
       for (let j = 0, index = 1; j < 5; j++) {
         let cell = newRow.insertCell(j);
         cell.innerHTML = keys[index++];
+        cell.style.backgroundColor = keys[6];
+        cell.style.fontWeight = "bold";
       }
     }
   } catch (error) {
