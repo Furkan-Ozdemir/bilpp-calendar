@@ -5,20 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/table.css">
+    <link rel="stylesheet" href="/css/table.css">
     <link rel="stylesheet" href="/css/taskPages.css">
-
     <title>today's tasks</title>
 </head>
 
 <body>
     <div class="container">
-
-
-        <h2 id="dateSelected"></h2>
+        <h2>Tasks that have date: <p id="date"></p>
+        </h2>
         <table id="table" border="1">
             <tr>
-                <th>Task Id</th>
+                <th>Task id</th>
                 <th>Task Name</th>
                 <th>Task Description</th>
                 <th>Task date</th>
@@ -40,7 +38,7 @@
             <button id="deleteButton" type="submit">delete a task</button>
         </form>
     </div>
-    <script src="http://localhost:3000/js/taskDate.js"></script>
+    <script src="http://localhost:3000/js/searchByDate.js"></script>
     <script src="http://localhost:3000/js/patchRouter.js"></script>
 
 </body>

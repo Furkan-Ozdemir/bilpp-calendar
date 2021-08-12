@@ -16,6 +16,8 @@ let inputHidden = document.getElementById("inputHidden");
 let showTaskUrl = document.getElementById("showTaskUrl");
 let searchByPhraseUrl = document.getElementById("searchByPhraseUrl");
 let searchByPhraseInput = document.getElementById("searchByPhraseInput");
+let searchByDateInput = document.getElementById("searchByDateInput");
+let searchByDateUrl = document.getElementById("searchByDateUrl");
 
 for (let i = 0; i < spans.length; i++) {
   if (spans[i].innerHTML == today) {
@@ -58,6 +60,12 @@ searchByPhraseUrl.addEventListener("click", () => {
   searchByPhraseUrl.setAttribute(
     "href",
     `/tasks/phraseFound?searchPhrase=${searchByPhraseInput.value}`
+  );
+});
+searchByDateUrl.addEventListener("click", () => {
+  searchByDateUrl.setAttribute(
+    "href",
+    `/tasks/searchByDateView?searchDate=${searchByDateInput.value}`
   );
 });
 /* ----------------------------------------- */

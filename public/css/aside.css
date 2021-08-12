@@ -1,7 +1,7 @@
 .aside {
   background-color: white;
   width: calc(100% - 850px);
-  height: 130vh;
+  height: 140vh;
   display: none;
 }
 .show {
@@ -91,6 +91,7 @@ button:hover {
   width: 80%;
   max-width: 200px;
 }
-#searchByPhraseInput {
+#searchByPhraseInput,
+#searchByDateInput {
   margin-bottom: 20px;
 }

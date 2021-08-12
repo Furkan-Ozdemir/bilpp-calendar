@@ -8,7 +8,7 @@ router.post("/tasks", auth, async (req, res) => {
   const task = new Task(req.body);
   try {
     await task.save();
-    res.status(201).send(task);
+    res.redirect("/private");
   } catch (error) {
     res.status(400).send(error);
   }
@@ -58,6 +58,20 @@ router.get("/tasks/phraseFound", auth, (req, res) => {
   res.render("taskPhrase");
 });
 
+router.get("/tasks/searchByDate", auth, async (req, res) => {
+  const searchDate = req.query.searchDate;
+  try {
+    if (!searchDate) res.redirect("/private");
+    const tasks = await Task.find({ taskDate: searchDate });
+    res.send(tasks);
+  } catch (error) {
+    res.send(error);
+  }
+});
+router.get("/tasks/searchByDateView", auth, (req, res) => {
+  res.render("filterByDate");
+});
+
 router.get("/today", auth, (req, res) => {
   res.render("taskToday");
 });
@@ -78,17 +92,6 @@ router.get("/tasks/selectedDate", auth, async (req, res) => {
 });
 router.get("/tasks/date", auth, (req, res) => {
   res.render("taskDate");
-});
-
-router.get("/tasks/:id", auth, async (req, res) => {
-  const _id = req.params.id;
-  try {
-    const task = await Task.findById({ _id });
-    if (!task) return res.status(404).send();
-    res.send(task);
-  } catch (error) {
-    res.status(500).send();
-  }
 });
 
 router.post("/tasks/:id", auth, async (req, res) => {

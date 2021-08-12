@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="calendar.css">
-    <link rel="stylesheet" href="aside.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/aside.css">
 
     <title>bilpp-calendar</title>
 </head>
@@ -22,6 +22,7 @@
             <h1>bilpp calendar <form action="/users/logout" method="POST" style="display: inline;">
                     <button type="submit">logout</button>
                 </form>
+
             </h1>
             <div class="calendar-layout">
                 <h2>August</h2>
@@ -86,9 +87,13 @@
                     <input type="hidden" name="selectedDate" id="inputHidden">
                     <a href="/tasks/date" id="showTaskUrl">Show tasks </a>
 
-                    <h2>Search by phrase</h2>
+                    <h2>Search by Phrase</h2>
                     <input type="text" id="searchByPhraseInput" name="taskPhrase">
                     <a href="/tasks/phraseFound" id="searchByPhraseUrl">Search</a>
+
+                    <h2>Search by Date</h2>
+                    <input type="text" id="searchByDateInput" name="taskSearchDate" placeholder="yyyy-mm-dd">
+                    <a href="/tasks/searchByDateView" id="searchByDateUrl">Search</a>
 
                 </div>
 
@@ -99,7 +104,7 @@
     </div>
 
 
-    <script src="http://localhost:3000/dateSelection.js"></script>
+    <script src="http://localhost:3000/js/dateSelection.js"></script>
 </body>
 
 </html>
