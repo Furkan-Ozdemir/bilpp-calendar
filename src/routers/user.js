@@ -31,9 +31,7 @@ router.post("/users", async (req, res) => {
 
     res.cookie("auth_token", token);
 
-    res.render("private", {
-      selectedDate: "august",
-    });
+    res.redirect("/private");
   } catch (error) {
     res.status(400).send(error);
   }
