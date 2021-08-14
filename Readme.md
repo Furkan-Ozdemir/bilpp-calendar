@@ -7,19 +7,6 @@
   
 
   <h3 align="center">FullStack Calendar</h3>
-
-  <p align="center">
-   A fullstack calendar app for your business
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Sign in</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">Create task with date and time</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Edit a task</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Delete a task</a>
-  </p>
 </p>
 
 
