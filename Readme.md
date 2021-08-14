@@ -27,22 +27,3 @@ This section should list any major frameworks that you built your project using.
 * [ExpressJS](https://expressjs.com/)
 * [VanillaJS](https://www.javascript.com/)
 * [NodeJS](https://nodejs.dev/)
-
-
-
-
-
-
-
-
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [Font Awesome](https://fontawesome.com)
-
-
-
-
-
